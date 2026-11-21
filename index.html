@@ -1,0 +1,866 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Los partidos más polémicos de los Mundiales</title>
+
+    <style>
+        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        
+
+        :root {
+            --fondo: #f0f4f1;
+            --tarjeta: #ffffff;
+            --texto: #26332c;
+            --texto-secundario: #58665e;
+            --verde: #08734b;
+            --verde-oscuro: #063b2c;
+            --menu: #082d23;
+            --borde: #dce8df;
+            --dorado: #d6ae45;
+            --fecha: #e3f2e9;
+            --sombra: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+       
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--fondo);
+            color: var(--texto);
+            line-height: 1.7;
+        }
+
+        
+
+        header {
+            position: relative;
+            background:
+                radial-gradient(circle at 85% 20%,
+                rgba(40,160,105,0.35), transparent 35%),
+                linear-gradient(135deg, #032b1e, #08734b, #063b2c);
+            color: white;
+            text-align: center;
+            padding: 90px 20px 75px;
+            border-bottom: 5px solid var(--dorado);
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 43px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #d7e8df;
+        }
+
+        .subtitulo {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 8px 20px;
+            border: 1px solid #ffffff60;
+            border-radius: 30px;
+            color: #f4d778;
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        
+
+        nav {
+            background: var(--menu);
+            padding: 17px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px #00000030;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin: 0 13px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e4bd55;
+            transform: translateY(-2px);
+        }
+
+        
+
+        .contenedor {
+            max-width: 1100px;
+            margin: auto;
+            padding: 45px 25px;
+        }
+
+        
+
+        .introduccion {
+            background: var(--tarjeta);
+            padding: 35px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: var(--sombra);
+            border-top: 5px solid var(--verde);
+            transition: 0.3s;
+        }
+
+        .introduccion h2 {
+            color: var(--verde);
+            font-size: 29px;
+            margin-bottom: 15px;
+        }
+
+        .introduccion p {
+            color: var(--texto-secundario);
+            text-align: justify;
+            margin-bottom: 12px;
+        }
+
+        
+
+        .titulo-seccion {
+            text-align: center;
+            color: var(--verde);
+            font-size: 30px;
+            margin: 45px 0 30px;
+        }
+
+        .titulo-seccion::after {
+            content: "";
+            display: block;
+            width: 75px;
+            height: 4px;
+            background: var(--dorado);
+            margin: 12px auto;
+            border-radius: 5px;
+        }
+
+        
+
+        .partido {
+            background: var(--tarjeta);
+            padding: 32px;
+            margin-bottom: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--borde);
+            border-left: 7px solid var(--verde);
+            box-shadow: var(--sombra);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .partido:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+        }
+
+        .partido h2 {
+            color: var(--verde);
+            font-size: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        /* FECHAS */
+
+        .fecha {
+            display: inline-block;
+            background: var(--fecha);
+            color: var(--verde);
+            padding: 7px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        
+
+        .resultado {
+            background: linear-gradient(135deg, #063b2c, #128052);
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            padding: 22px 15px;
+            margin: 22px 0;
+            border-radius: 12px;
+            border-bottom: 4px solid var(--dorado);
+            box-shadow: 0 5px 12px #00000020;
+        }
+
+        .resultado small {
+            display: block;
+            font-size: 15px;
+            font-weight: normal;
+            color: #d8eee1;
+        }
+
+        
+
+        .partido h3 {
+            color: var(--verde);
+            margin-top: 24px;
+            margin-bottom: 5px;
+            font-size: 19px;
+        }
+
+        .partido p {
+            margin-top: 8px;
+            text-align: justify;
+            color: var(--texto-secundario);
+        }
+
+        
+
+        footer {
+            background: var(--menu);
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+            margin-top: 50px;
+            border-top: 4px solid var(--dorado);
+        }
+
+        footer p {
+            margin: 6px;
+            color: #d7e8df;
+        }
+
+        footer strong {
+            font-size: 18px;
+        }
+
+        
+
+        .subir {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #08734b;
+            color: white;
+            text-decoration: none;
+            font-size: 23px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px #00000035;
+            transition: 0.3s;
+            z-index: 99;
+        }
+
+        .subir:hover {
+            background: #d6ae45;
+            transform: translateY(-5px);
+        }
+
+        
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .introduccion,
+        .partido {
+            animation: aparecer 0.7s ease;
+        }
+
+        
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 70px 15px 50px;
+            }
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            header p {
+                font-size: 15px;
+            }
+
+            nav {
+                padding: 12px 5px;
+            }
+
+            nav a {
+                margin: 5px 7px;
+                font-size: 12px;
+            }
+
+            .contenedor {
+                padding: 25px 13px;
+            }
+
+            .partido {
+                padding: 21px;
+            }
+
+            .partido h2 {
+                font-size: 21px;
+            }
+
+            .resultado {
+                font-size: 20px;
+            }
+
+            .introduccion {
+                padding: 23px;
+            }
+
+            .titulo-seccion {
+                font-size: 25px;
+            }
+        }
+
+        
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+
+        /* BOTÓN LATERAL DE VIDEOS */
+        .videos-toggle {
+            position: fixed;
+            right: 0;
+            top: 42%;
+            z-index: 200;
+            border: none;
+            border-radius: 12px 0 0 12px;
+            padding: 15px 12px;
+            background: #08734b;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px #00000035;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            transition: background 0.3s, padding 0.3s;
+        }
+
+        .videos-toggle:hover {
+            background: #d6ae45;
+            color: #082d23;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .panel-videos {
+            position: fixed;
+            top: 50%;
+            right: 58px;
+            transform: translateY(-50%);
+            width: 290px;
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: 20px;
+            background: var(--tarjeta);
+            color: var(--texto);
+            border: 1px solid var(--borde);
+            border-top: 5px solid var(--verde);
+            border-radius: 14px;
+            box-shadow: 0 8px 28px #00000035;
+            z-index: 199;
+            display: none;
+        }
+
+        .panel-videos.abierto {
+            display: block;
+            animation: aparecer 0.25s ease;
+        }
+
+        .panel-videos h2 {
+            color: var(--verde);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .panel-videos p {
+            color: var(--texto-secundario);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .panel-videos a {
+            display: block;
+            padding: 10px 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            background: var(--fecha);
+            color: var(--verde-oscuro);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .panel-videos a:hover {
+            background: var(--verde);
+            color: white;
+            transform: translateX(-3px);
+        }
+
+        .cerrar-videos {
+            float: right;
+            border: none;
+            background: transparent;
+            color: var(--texto-secundario);
+            font-size: 22px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        @media (max-width: 600px) {
+            .videos-toggle {
+                top: auto;
+                bottom: 95px;
+                padding: 12px 9px;
+                font-size: 12px;
+            }
+
+            .panel-videos {
+                right: 48px;
+                width: min(280px, calc(100vw - 65px));
+                max-height: 65vh;
+            }
+        }
+
+
+        /* IMÁGENES DE LOS PARTIDOS */
+        .imagen-partido {
+            margin: 22px 0;
+            text-align: center;
+        }
+
+        .imagen-partido img {
+            display: block;
+            width: 100%;
+            max-width: 760px;
+            max-height: 430px;
+            object-fit: cover;
+            margin: 0 auto;
+            border-radius: 12px;
+            border: 3px solid var(--borde);
+            box-shadow: 0 5px 16px #00000020;
+        }
+
+        .imagen-partido figcaption {
+            margin-top: 8px;
+            color: var(--texto-secundario);
+            font-size: 13px;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header id="inicio">
+
+        <h1>Los partidos más polémicos de los Mundiales</h1>
+
+        <p>Historia, controversias y momentos que marcaron el fútbol mundial</p>
+
+        <div class="subtitulo">
+            HISTORIA DEL FÚTBOL INTERNACIONAL
+        </div>
+
+    </header>
+
+    <!-- MENU -->
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#1966">1966</a>
+        <a href="#1986">1986</a>
+        <a href="#2002">2002</a>
+        <a href="#2010">2010</a>
+        <a href="#2022">2022</a>
+    </nav>
+
+    <main class="contenedor">
+
+        <!-- INTRODUCCION -->
+
+        <section class="introduccion">
+
+            <h2>Introducción</h2>
+
+            <p>
+                A lo largo de la historia de los Mundiales de fútbol
+                hubo partidos que quedaron en la memoria por sus
+                grandes polémicas. Algunas decisiones arbitrales,
+                goles dudosos y jugadas antideportivas provocaron
+                discusiones entre jugadores, entrenadores y aficionados.
+            </p>
+
+            <p>
+                En esta página conoceremos algunos de los encuentros
+                más polémicos, explicando qué ocurrió, por qué fueron
+                discutidos y cómo influyeron en el desarrollo del partido.
+            </p>
+
+        </section>
+
+        <h2 class="titulo-seccion">Partidos históricos y polémicos</h2>
+
+        <!-- PARTIDO 1 -->
+
+        <section class="partido" id="1966">
+
+            <h2>01. Inglaterra vs. Alemania - Mundial 1966</h2>
+
+            <span class="fecha">30 de julio de 1966</span>
+
+            <!-- IMAGEN DEL PARTIDO: reemplazá el archivo por tu fotografía -->
+            <figure class="imagen-partido">
+                <img src="imagenes/partido-1966.webp" alt="La final de Inglaterra contra Alemania en el Mundial de 1966">
+                <figcaption>La final de Inglaterra contra Alemania en el Mundial de 1966</figcaption>
+            </figure>
+
+            <div class="resultado">
+                Inglaterra 4 - 2 Alemania
+                <small>Final del Mundial de 1966</small>
+            </div>
+
+            <h3>¿Por qué fue polémico?</h3>
+
+            <p>
+                Durante la final, el inglés Geoff Hurst realizó un
+                disparo que golpeó el travesaño y rebotó cerca de
+                la línea de gol. El árbitro asistente consideró que
+                la pelota había entrado y el árbitro concedió el gol,
+                aunque hasta hoy existen discusiones sobre si cruzó
+                completamente la línea.
+            </p>
+
+            <h3>¿Cómo afectó al partido?</h3>
+
+            <p>
+                El gol puso a Inglaterra en ventaja durante la
+                prórroga. Alemania tuvo que buscar el empate,
+                mientras que Inglaterra aprovechó los espacios
+                para marcar otro gol y ganar la final.
+            </p>
+
+        </section>
+
+        <!-- PARTIDO 2 -->
+
+        <section class="partido" id="1986">
+
+            <h2>02. Argentina vs. Inglaterra - Mundial 1986</h2>
+
+            <span class="fecha">22 de junio de 1986</span>
+
+            <!-- IMAGEN DEL PARTIDO: reemplazá el archivo por tu fotografía -->
+            <figure class="imagen-partido">
+                <img src="imagenes/partido-1986.webp" alt="Diego Maradona durante el partido Argentina contra Inglaterra de 1986">
+                <figcaption>Diego Maradona durante el partido Argentina contra Inglaterra de 1986</figcaption>
+            </figure>
+
+            <div class="resultado">
+                Argentina 2 - 1 Inglaterra
+                <small>Cuartos de final</small>
+            </div>
+
+            <h3>¿Por qué fue polémico?</h3>
+
+            <p>
+                Diego Maradona marcó el primer gol utilizando su mano
+                izquierda para golpear la pelota por encima del
+                arquero inglés Peter Shilton. El árbitro no observó
+                la infracción y concedió el gol. Maradona luego
+                describió la jugada como la "Mano de Dios".
+            </p>
+
+            <h3>¿Cómo afectó al partido?</h3>
+
+            <p>
+                El gol permitió que Argentina se pusiera en ventaja.
+                Inglaterra tuvo que intentar remontar el resultado.
+                Poco después, Maradona marcó el segundo gol,
+                considerado uno de los mejores de la historia.
+            </p>
+
+        </section>
+
+        <!-- PARTIDO 3 -->
+
+        <section class="partido" id="2002">
+
+            <h2>03. Italia vs. Corea del Sur - Mundial 2002</h2>
+
+            <span class="fecha">18 de junio de 2002</span>
+
+            <!-- IMAGEN DEL PARTIDO: reemplazá el archivo por tu fotografía -->
+            <figure class="imagen-partido">
+                <img src="imagenes/partido-2002.webp" alt="Italia contra Corea del Sur en el Mundial de 2002">
+                <figcaption>Italia contra Corea del Sur en el Mundial de 2002</figcaption>
+            </figure>
+
+            <div class="resultado">
+                Corea del Sur 2 - 1 Italia
+                <small>Octavos de final</small>
+            </div>
+
+            <h3>¿Por qué fue polémico?</h3>
+
+            <p>
+                El árbitro ecuatoriano Byron Moreno tomó varias
+                decisiones discutidas durante el encuentro.
+                Anuló un gol de Italia por fuera de juego y expulsó
+                a Francesco Totti por una supuesta simulación.
+                La decisión sobre Totti fue especialmente
+                cuestionada por los italianos.
+            </p>
+
+            <h3>¿Cómo afectó al partido?</h3>
+
+            <p>
+                Italia tuvo dificultades para mantener su ventaja
+                y terminó perdiendo durante el tiempo suplementario.
+                La expulsión de Totti y las decisiones arbitrales
+                aumentaron la tensión del encuentro.
+            </p>
+
+        </section>
+
+        <!-- PARTIDO 4 -->
+
+        <section class="partido" id="2010">
+
+            <h2>04. Alemania vs. Inglaterra - Mundial 2010</h2>
+
+            <span class="fecha">27 de junio de 2010</span>
+
+            <!-- IMAGEN DEL PARTIDO: reemplazá el archivo por tu fotografía -->
+            <figure class="imagen-partido">
+                <img src="imagenes/partido-2010-alemania-inglaterra.webp" alt="Alemania contra Inglaterra en el Mundial de 2010">
+                <figcaption>Alemania contra Inglaterra en el Mundial de 2010</figcaption>
+            </figure>
+
+            <div class="resultado">
+                Alemania 4 - 1 Inglaterra
+                <small>Octavos de final</small>
+            </div>
+
+            <h3>¿Por qué fue polémico?</h3>
+
+            <p>
+                Durante el partido, Frank Lampard realizó un disparo
+                que pegó en el travesaño y rebotó claramente detrás
+                de la línea de gol. Sin embargo, el árbitro no
+                concedió el tanto porque no pudo observar que
+                la pelota había entrado.
+            </p>
+
+            <h3>¿Cómo afectó al partido?</h3>
+
+            <p>
+                Inglaterra podría haber empatado 2-2 antes del
+                descanso. En cambio, Alemania mantuvo la ventaja
+                y posteriormente amplió el resultado hasta ganar
+                por 4-1.
+            </p>
+
+        </section>
+
+        <!-- PARTIDO 5 -->
+
+        <section class="partido" id="uruguay">
+
+            <h2>05. Uruguay vs. Ghana - Mundial 2010</h2>
+
+            <span class="fecha">2 de julio de 2010</span>
+
+            <!-- IMAGEN DEL PARTIDO: reemplazá el archivo por tu fotografía -->
+            <figure class="imagen-partido">
+                <img src="imagenes/partido-2010-uruguay-ghana.webp" alt="Uruguay contra Ghana en el Mundial de 2010">
+                <figcaption>Uruguay contra Ghana en el Mundial de 2010</figcaption>
+            </figure>
+
+            <div class="resultado">
+                Uruguay 1 - 1 Ghana
+                <small>Uruguay ganó 4 - 2 en penales</small>
+            </div>
+
+            <h3>¿Por qué fue polémico?</h3>
+
+            <p>
+                En el último minuto de la prórroga, Luis Suárez
+                detuvo con las manos un remate de Ghana que
+                estaba por entrar al arco. El árbitro sancionó
+                penal y expulsó al jugador uruguayo.
+            </p>
+
+            <h3>¿Cómo afectó al partido?</h3>
+
+            <p>
+                Ghana tuvo la oportunidad de ganar el encuentro,
+                pero Asamoah Gyan falló el penal al estrellar
+                la pelota en el travesaño. Finalmente, Uruguay
+                ganó en la tanda de penales y avanzó a semifinales.
+            </p>
+
+        </section>
+
+        <!-- PARTIDO 6 -->
+
+        <section class="partido" id="2022">
+
+            <h2>06. Argentina vs. Países Bajos - Mundial 2022</h2>
+
+            <span class="fecha">9 de diciembre de 2022</span>
+
+            <!-- IMAGEN DEL PARTIDO: reemplazá el archivo por tu fotografía -->
+            <figure class="imagen-partido">
+                <img src="imagenes/partido-2022.webp" alt="Argentina contra Países Bajos en el Mundial de 2022">
+                <figcaption>Argentina contra Países Bajos en el Mundial de 2022</figcaption>
+            </figure>
+
+            <div class="resultado">
+                Argentina 2 - 2 Países Bajos
+                <small>Argentina ganó 4 - 3 en penales</small>
+            </div>
+
+            <h3>¿Por qué fue polémico?</h3>
+
+            <p>
+                El partido estuvo marcado por fuertes discusiones,
+                faltas y enfrentamientos entre los jugadores.
+                Uno de los momentos más polémicos ocurrió cuando
+                Leandro Paredes pateó la pelota hacia el banco
+                de suplentes neerlandés, provocando una reacción
+                de los jugadores rivales.
+            </p>
+
+            <h3>¿Cómo afectó al partido?</h3>
+
+            <p>
+                La tensión aumentó durante el encuentro y hubo
+                numerosos enfrentamientos. Países Bajos consiguió
+                empatar el partido en los últimos minutos y
+                finalmente Argentina ganó en la tanda de penales.
+            </p>
+
+        </section>
+
+    </main>
+
+    
+
+
+    <!-- BOTÓN Y PANEL CON VIDEOS DE YOUTUBE -->
+    <button class="videos-toggle" id="abrirVideos"
+            aria-expanded="false" aria-controls="panelVideos">
+        VIDEOS DE LOS PARTIDOS
+    </button>
+
+    <aside class="panel-videos" id="panelVideos" aria-label="Videos de YouTube">
+        <button class="cerrar-videos" id="cerrarVideos" aria-label="Cerrar panel">×</button>
+        <h2>Videos de los partidos</h2>
+        <p>Elegí un encuentro para buscar videos y resúmenes en YouTube.</p>
+
+        <a href="https://www.youtube.com/results?search_query=Inglaterra+Alemania+4-2+final+Mundial+1966+gol+fantasma"
+           target="_blank" rel="noopener noreferrer">1966 - Inglaterra vs. Alemania</a>
+
+        <a href="https://www.youtube.com/results?search_query=Argentina+Inglaterra+2-1+Mundial+1986+Mano+de+Dios"
+           target="_blank" rel="noopener noreferrer">1986 - Argentina vs. Inglaterra</a>
+
+        <a href="https://www.youtube.com/results?search_query=Italia+Corea+del+Sur+1-2+Mundial+2002+pol%C3%A9mica"
+           target="_blank" rel="noopener noreferrer">2002 - Italia vs. Corea del Sur</a>
+
+        <a href="https://www.youtube.com/results?search_query=Alemania+Inglaterra+4-1+Mundial+2010+gol+Lampard"
+           target="_blank" rel="noopener noreferrer">2010 - Alemania vs. Inglaterra</a>
+
+        <a href="https://www.youtube.com/results?search_query=Uruguay+Ghana+Mundial+2010+mano+Luis+Suarez+penal"
+           target="_blank" rel="noopener noreferrer">2010 - Uruguay vs. Ghana</a>
+
+        <a href="https://www.youtube.com/results?search_query=Argentina+Paises+Bajos+2-2+Mundial+2022+partido+pol%C3%A9mico"
+           target="_blank" rel="noopener noreferrer">2022 - Argentina vs. Países Bajos</a>
+    </aside>
+
+    <script>
+        const botonVideos = document.getElementById("abrirVideos");
+        const panelVideos = document.getElementById("panelVideos");
+        const cerrarVideos = document.getElementById("cerrarVideos");
+
+        botonVideos.addEventListener("click", function () {
+            const abierto = panelVideos.classList.toggle("abierto");
+            botonVideos.setAttribute("aria-expanded", abierto);
+        });
+
+        cerrarVideos.addEventListener("click", function () {
+            panelVideos.classList.remove("abierto");
+            botonVideos.setAttribute("aria-expanded", "false");
+        });
+
+        document.addEventListener("keydown", function (evento) {
+            if (evento.key === "Escape") {
+                panelVideos.classList.remove("abierto");
+                botonVideos.setAttribute("aria-expanded", "false");
+            }
+        });
+    </script>
+
+    <a href="#inicio" class="subir" title="Volver arriba">↑</a>
+
+    <!-- PIE DE PAGINA -->
+
+    <footer>
+        <p><strong>Historia de los Mundiales de Fútbol</strong></p>
+        <p>Trabajo de investigación - Fútbol internacional</p>
+    </footer>
+
+</body>
+</html>
